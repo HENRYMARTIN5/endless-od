@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Night Open Directories</title>
+</head>
+<body>
+    <h2>Endless Night Open Directories</h2>
+    <p>This server hosts a simple frontend to all of the media in Project Endless Night. This is currently the only way to access ebooks, as Emby does not support them.</p>
+    <p>Click on a folder to view its contents.</p>
+    <ul>
+        <li><a href="/static/Movies">Movies</a> - {{ moviecount }} files</li>
+        <li><a href="/static/TV">TV Shows</a> - {{ tvcount }} files</li>
+        <li><a href="/static/Music">Music</a> - {{ musiccount }} files</li>
+        <li><a href="/static/Books">Books</a> - {{ bookcount }} files</li>
+    </ul>
+    <p>Project Endless Night OD server v{{ server_version }}</p>
+</body>
+</html>
