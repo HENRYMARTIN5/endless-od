@@ -11,7 +11,7 @@
         <li><a href="..">Parent Directory</a> - <a href="/">Back Home</a></li>
         {% set i=0 %}
         {% for file in files %}
-            <li><a href="/{{ path }}/{{ file }}">{{ file }}</a> - {{ filesizes[i] }}</li>
+            <li><a href="/static/{{ path }}/{{ file }}">{{ file }}</a> - {{ filesizes[i] }}</li>
             {% set i=i+1 %}
         {% endfor %}
     </ul>
