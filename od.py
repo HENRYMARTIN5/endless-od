@@ -9,11 +9,12 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         musiccount = len(os.listdir("music"))
         bookcount = len(os.listdir("books"))
         tvcount = len(os.listdir("tv"))
-        allowed_dl_paths = ["/movies/", "/music/", "/books/", "/tv/"]
+        audiobookcount = len(os.listdir("audiobooks"))
+        allowed_dl_paths = ["/movies/", "/music/", "/books/", "/tv/", "/audiobooks/"]
         for path in allowed_dl_paths:
             if self.path.startswith(path):
                 return http.server.SimpleHTTPRequestHandler.do_GET(self)
-        allowed_paths = ["/", "/movies/", "/music/", "/books/", "/tv/"]
+        allowed_paths = ["/", "/movies/", "/music/", "/books/", "/tv/", "/audiobooks/"]
         if self.path in allowed_paths:
             if self.path == "/":
                 with open("index.html", "r") as f:
@@ -22,6 +23,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
                     file = file.replace("{{ musiccount }}", str(musiccount))
                     file = file.replace("{{ bookcount }}", str(bookcount))
                     file = file.replace("{{ tvcount }}", str(tvcount))
+                    file = file.replace("{{ audiobookcount }}", str(audiobookcount))
                     self.send_response(200)
                     self.end_headers()
                     self.wfile.write(bytes(file, "utf-8"))
