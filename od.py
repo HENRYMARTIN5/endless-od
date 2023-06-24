@@ -1,6 +1,6 @@
 import http.server
 import socketserver
-import os
+import os, sys
 
 # Define the custom handler
 class CustomHandler(http.server.SimpleHTTPRequestHandler):
@@ -42,4 +42,12 @@ handler = CustomHandler
 # Create the server
 with socketserver.TCPServer(("", port), handler) as httpd:
     print(f"Serving at port {port}")
-    httpd.serve_forever()
+    while True:
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print("Stopping server")
+            sys.exit()
+        except Exception as e:
+            pass
+    
